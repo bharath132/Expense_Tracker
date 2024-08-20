@@ -9,13 +9,14 @@ function Slidebar() {
       </div>
         <div className="profile">
           <div className="user_logo"></div>
-          <h1 className="username">USERNAME</h1>
+          <h2 className="username">USERNAME</h2>
         </div>
       <div className="menus">
         <div className="dashboard_buttons">
           <DashButton />
         </div>
         <div className="settings_buttons">
+        <i class="fa-solid fa-gear"></i>
           <button className="settings">Setting</button><br />
           <button className="sign_out">Sign Out</button>
         </div>

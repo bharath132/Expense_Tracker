@@ -4,6 +4,7 @@
     height: 100vh;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 8px black;
+    /* overflow: hidden; */
 }
 
 /* --------LOGO---------- */
@@ -14,11 +15,12 @@
 /* ----------USER PROFILE----------- */
 
 .profile{
-    margin: 0 0 20px 0;
+    margin: 0 0 1rem 0;
     padding: 0 30px;
     display: flex;
     text-align: center;
     align-items: center;
+    color: rgb(63, 55, 55);
     gap:5px
     /* justify-content: space-between; */
 }
@@ -27,6 +29,7 @@
     height: 50px;
     background-color: black;
     border-radius: 50%;
+    color: gray;
 }
 
 .username{
@@ -37,8 +40,16 @@
 
 .menus{
     height: 75vh;
-    border: solid;
+    /* border: solid; */
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: medium;
+    font-weight: 100;
+}
+.dashboard_buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
