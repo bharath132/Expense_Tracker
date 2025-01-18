@@ -1,0 +1,16 @@
+.Categorize {
+  margin: 20px;
+  flex-grow: 1;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  .title {
+    padding: 0;
+    /* height: 100px; */
+    margin: 20px 30px;
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-color);
+    font-size: 25px;
+  }
+}

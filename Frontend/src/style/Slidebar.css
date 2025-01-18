@@ -1,0 +1,100 @@
+.sidebar {
+  width: 15%;
+  height: 100vh;
+  background-color: #c3d0e7;
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); */
+  color: var(--primary-color);
+  /* overflow: hidden; */
+  border-radius: 0 20px 20px 0px;
+}
+
+/* --------LOGO---------- */
+.logo {
+  padding: 30px 30px;
+}
+
+/* ----------USER PROFILE----------- */
+
+.profile {
+  margin: 0 0 1rem 0;
+  padding: 0 30px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  /* color: rgb(77, 75, 75); */
+  gap: 5px;
+  /* justify-content: space-between; */
+}
+.user_logo {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(230, 221, 221);
+  border-radius: 50%;
+  color: var(--primary-color);
+}
+
+.username {
+  padding: 0;
+}
+
+/* ---------Settings----------- */
+
+.menus {
+  /* border: solid; */
+  height: 88%;
+  /* margin-top: 25px; */
+  /* padding: 50px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: medium;
+  font-weight: 100;
+}
+.dashboard_buttons {
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+}
+.user_settings {
+  font-size: 30px;
+  flex-grow: 0;
+}
+.settings {
+  text-decoration: none;
+  font-size: 25px;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  /* color: rgb(37, 37, 41); */
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* background-color: white; */
+  &:hover {
+      /* border:2px solid var(--primary-color); */
+      background-color: #8ab3ff;
+      color: #fdfdfd;
+      transition: all 0.45s;
+    
+    .settings--title {
+      color: #fbfff1;
+    }
+  }
+}
+.settings--title {
+  background-color: transparent;
+  border: none;
+  /* color: rgb(56, 56, 59); */
+  color: #6c757d;
+  font-size: 25px;
+  font-weight: 500;
+  /* background-color: white; */
+  &:hover {
+    /* background-color: blue; */
+    color: #fbfff1;
+  }
+}
