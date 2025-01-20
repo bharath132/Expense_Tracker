@@ -1,17 +1,85 @@
 .Transaction {
-    margin: 20px;
-    flex-grow: 1;
-    border-radius: 20px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    .title {
-      padding: 0;
-      /* height: 100px; */
-      margin: 20px 30px;
-      font-family: "Poppins", sans-serif;
-      color: var(--primary-color);
-      font-size: 25px;
-    }
+  margin: 20px;
+  flex-grow: 1;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  .title {
+    padding: 0;
+    /* height: 100px; */
+    margin: 20px 30px;
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-color);
+    font-size: 25px;
   }
-  
+}
+.Transactiom--table {
+  /* margin: 50px 150px; */
+  /* padding: 10px 30px; */
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  /* background-color: rgb(33, 106, 243); */
+  color: gray;
+  /* box-shadow: 0 0 20px rgba(70, 69, 69, 0.2); */
+}
+.Transactiom--row {
+  padding: 10px 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  color: gray;
+  font-weight: 10;
+  /* box-shadow: 10px -1px 8px rgba(0, 0, 0, 0.2); */
+  /* border: 2px solid; */
+  /* background-color: aquamarine; */
+}
+.Transactiom--con {
+  box-shadow: 0 0 8px rgba(80, 79, 79, 0.2);
+  margin: 0 100px;
+  border-radius: 20px;
+}
+
+.trans-item{
+  display: flex;
+  padding: 10px 30px;
+  width: 100%;
+  align-items: center;
+  .Trans-info{
+    flex-grow: 1;
+  }
+  .tans-desc{
+    display: flex;
+    font-size: 15px;
+    font-weight: 300;
+    gap: 5px;
+  }
+}
+.trans-title{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  .type{
+    font-size: 15px;
+    font-size: 15px;
+    padding: 0px 10px;
+    border-radius: 20px;
+    background-color: red;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+  }
+  .income {
+    background-color: green;
+  }
+}
+.action-btns{
+  /* width: 100%; */
+  display: flex;
+  padding: 10px 30px 10px 0;
+  align-items: center;
+  gap: 10px;
+  /* background-color: aquamarine; */
+}

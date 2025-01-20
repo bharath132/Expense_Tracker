@@ -1,16 +1,111 @@
 .Categorize {
   margin: 20px;
+  height: 100vh;
   flex-grow: 1;
   border-radius: 20px;
   box-sizing: border-box;
   background-color: #ffffff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  align-items: center;
   .title {
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
     padding: 0;
     /* height: 100px; */
     margin: 20px 30px;
+    margin-right: 170px;
     font-family: "Poppins", sans-serif;
     color: var(--primary-color);
     font-size: 25px;
+  }
+}
+
+
+.center-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .category_container{
+    width: clamp(90%, 60%, 100%);
+    box-shadow: 0 0 8px rgba(80, 79, 79, 0.2);
+    margin-top: 20px;
+    border-radius: 20px;
+    /* background-color: aqua; */
+  }
+}
+
+
+/* Header  */
+.Categorize_header{
+  width: 90%;
+  display: flex;
+  flex-direction: row-reverse;
+
+  align-content: start;
+}
+.header--title{
+  padding: 10px 20px;
+  color: #ffffff;
+  border-radius: 20px;
+  flex-grow: 1;
+  background-color:var(--primary-color);
+}
+/* End Header */
+
+
+
+.addbtn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  font-size: 20px;
+  padding: 1px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+  font-weight: 600;
+}
+
+.categorize--item {
+  padding: 10px 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  color: gray;
+  font-weight: 10;
+  /* box-shadow: 10px -1px 8px rgba(0, 0, 0, 0.2); */
+  /* border: 2px solid; */
+  /* background-color: aquamarine; */
+}
+.action {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  .del {
+    margin-right: 30px;
+    color: red;
+    cursor: pointer;
+    &:hover {
+      filter: drop-shadow(2px 2px 5px rgba(80, 79, 79, 0.2));
+    }
+  }
+}
+.row-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  .type {
+    font-size: 15px;
+    padding: 0px 10px;
+    border-radius: 20px;
+    background-color: red;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+  }
+  .income {
+    background-color: green;
   }
 }
