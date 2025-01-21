@@ -64,7 +64,7 @@
 }
 .settings {
   text-decoration: none;
-  font-size: 25px;
+  font-size: clamp(0.8rem, 1.1vw, 5rem);;
   margin: 10px 20px;
   padding: 10px 20px;
   border-radius: 20px;
@@ -93,7 +93,7 @@
   border: none;
   /* color: rgb(56, 56, 59); */
   color: #6c757d;
-  font-size: 25px;
+  font-size: clamp(0.8rem, 1.1vw, 5rem);
   font-weight: 500;
   /* background-color: white; */
   &:hover {

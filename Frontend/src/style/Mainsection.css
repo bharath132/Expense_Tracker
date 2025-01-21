@@ -56,9 +56,23 @@
   width: 96%;
   height: 50%;
   margin: 60px 30px;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 .receent_traans{
-  margin: 0 30px;
+  margin: 30px 30px;
+
+}
+.recent-container{
+  margin: 30px 0;
+
+  /* border-radius: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); */
+}
+.trans-item{
+  /* background-color: #5dd9c1; */
+  margin: 5px 0;
+  border-radius: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
