@@ -13,6 +13,9 @@
     color: var(--primary-color);
     font-size: 25px;
   }
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-y: auto;
 }
 .dash-info {
   display: flex;
@@ -55,4 +58,7 @@
   margin: 60px 30px;
   border-radius: 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+.receent_traans{
+  margin: 0 30px;
 }

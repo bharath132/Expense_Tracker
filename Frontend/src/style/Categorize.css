@@ -1,6 +1,6 @@
 .Categorize {
   margin: 20px;
-  height: 100vh;
+  /* height: 100vh; */
   flex-grow: 1;
   border-radius: 20px;
   box-sizing: border-box;

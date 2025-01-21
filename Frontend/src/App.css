@@ -9,6 +9,8 @@
   font-family: "Poppins", sans-serif;
 }
 .dashboard {
+  width: 100%;
+  height: 100vh;
   background-color: #c3d0e7;
   display: flex;
 }
