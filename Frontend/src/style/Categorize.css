@@ -66,6 +66,7 @@
   cursor: pointer;
   margin-right: 20px;
   font-weight: 600;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 .categorize--item {
@@ -109,4 +110,49 @@ margin-top: 10px;
   .income {
     background-color: green;
   }
+}
+
+
+
+/* Category item add  */
+
+
+.categoryAdd-container{
+  margin-top: 50px;
+  padding: 40px;
+  width: 90%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  input{
+    width: 100%;
+    border-radius: 20px;
+    outline: none;
+    border: 2px var(--primary-color) solid;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .btns{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+  }
+}
+
+
+/* btn */
+
+.btn--secondary{
+  background-color: #ffffff;
+  color: gray;
+  border: none;
+  font-size: 20px;
+  padding: 1px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+  font-weight: 600;
+  border: 1px var(--primary-color) solid;
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); */
 }

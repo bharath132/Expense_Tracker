@@ -9,7 +9,6 @@ function DashButton() {
   ];
   const navigator = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
   function Handlebtn(e) {
     navigator(`/${e.target.text}`);
   }
