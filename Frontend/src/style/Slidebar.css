@@ -79,7 +79,7 @@
   /* background-color: white; */
   &:hover {
       /* border:2px solid var(--primary-color); */
-      background-color: #8ab3ff;
+      background-color: #adc8f8;
       color: #fdfdfd;
       transition: all 0.45s;
     

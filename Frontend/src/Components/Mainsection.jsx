@@ -8,6 +8,7 @@ function Mainsection() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<DashBoard />}></Route>
         <Route path="/Dashboard" element={<DashBoard />}></Route>
         <Route path="/Categorize" element={<Categorize />}></Route>
         <Route path="/Transaction" element={<Transaction />}></Route> 

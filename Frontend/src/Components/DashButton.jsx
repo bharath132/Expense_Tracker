@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function DashButton() {
   const dashbtn = [
     { name: "Dashboard", icon: "fa-solid fa-gauge " },
-    { name: "categorize", icon: "fa-solid fa-money-check" },
+    { name: "Categorize", icon: "fa-solid fa-money-check" },
     { name: "Transaction", icon: "fa-solid fa-arrow-right-arrow-left" },
   ];
   const navigator = useNavigate();
@@ -15,14 +15,14 @@ function DashButton() {
   return (
     <div className="navbar--links">
       {dashbtn.map((btn) => (
-        <a
+        <a href={`/${btn.name}`}
           key={btn.name}
           className={`dashbtns ${
             location.pathname == `/${btn.name}` ? "active" : ""
           }`}
           onClick={(e) => Handlebtn(e)}
         >
-          <i className={btn.icon}></i>
+          <i className={btn.icon} ></i>
           {btn.name}
         </a>
       ))}
