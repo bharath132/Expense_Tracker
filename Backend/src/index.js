@@ -29,7 +29,7 @@ app.post('/createTranscationList',(req,res)=>{
 })
 app.put('/updateTranscationList',(req,res)=>{
   const {name,amount,desc,type,id}=req.body
-  Transcationlist.updateOne({_id:id},{name,amount,desc,type}).then((updateList)=>{
+  Transcationlist.updateOne({_id:new mongoose.Types.ObjectId(id)},{name,amount,desc,type}).then((updateList)=>{
     res.json(updateList)
   })
 })
@@ -50,6 +50,16 @@ app.post("/createCategoryList",(req,res)=>{
   })
 })
 
+app.put('/updateCategoryList',(req,res)=>{
+  const {id,name,type}=req.body
+  CategoryList.updateOne({_id:new mongoose.Types.ObjectId(id)},{anme,type}).then((result)=>{
+    res.json(result)
+  })
+})
+app.delete('/deleteCategoryList',(req,res)=>{
+  const id=req.body
+  CategoryList.deleteOne({_id:new mongoose.Types.ObjectId(id)})
+})
 app.listen(3000,()=>{
     console.log("listening")
 })
