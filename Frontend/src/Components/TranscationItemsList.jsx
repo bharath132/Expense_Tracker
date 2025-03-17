@@ -1,74 +1,52 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect } from "react";
 
+const TransactiomList = [
+  {
+    amount: "jyug",
+    desc: "ds",
+    name: "dwa",
+    type: "rgrg",
+  },
+  {
+    amount: "jyug",
+    desc: "ds",
+    name: "dwa",
+    type: "rgrg",
+  },
+];
 export const TranscationItemsList = () => {
+  useEffect(() => {
+    axios.post("http://localhost:3000/getTranscationList").then((res) => {
+      console.log(res.data);
+    });
+  }, []);
   return (
     <div className="Transactiom--con">
-    <div className="Transactiom--table">
-      <div className="trans-item">
-        <div className="Trans-info">
-          <div className="trans-title">
-            <h3>netflix</h3>
-            <h3 className="type">Type</h3>
-          </div>
-          <div className="tans-desc">
-            <h3>Salary</h3>
+      {TransactiomList.map((list) => (
+        <div className="Transactiom--table">
+          <div className="trans-item">
+            <div className="Trans-info">
+              <div className="trans-title">
+                <h3>{list.name}</h3>
+                <h3 className="type">{list.type}</h3>
+              </div>
+              <div className="tans-desc">
+                <h3>{list.desc}</h3>
 
-            <h3>24/02/2000</h3>
+                <h3>24/02/2000</h3>
+              </div>
+            </div>
+            <div className="trans-amount">
+              <p>{list.amount}</p>
+            </div>
+            <div className="action-btns">
+              <i class="fa-solid fa-pen-to-square edit"></i>
+              <i class="fa-solid fa-trash del"></i>
+            </div>
           </div>
         </div>
-        <div className="trans-amount">
-          <p>+90000</p>
-        </div>
-        <div className="action-btns">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
-        </div>
-      </div>
+      ))}
     </div>
-    <div className="Transactiom--table">
-      <div className="trans-item">
-        <div className="Trans-info">
-          <div className="trans-title">
-            <h3>netflix</h3>
-            <h3 className="type">Type</h3>
-          </div>
-          <div className="tans-desc">
-            <h3>Salary</h3>
-
-            <h3>24/02/2000</h3>
-          </div>
-        </div>
-        <div className="trans-amount">
-          <p>+90000</p>
-        </div>
-        <div className="action-btns">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
-        </div>
-      </div>
-    </div>
-    <div className="Transactiom--table">
-      <div className="trans-item">
-        <div className="Trans-info">
-          <div className="trans-title">
-            <h3>netflix</h3>
-            <h3 className="type">Type</h3>
-          </div>
-          <div className="tans-desc">
-            <h3>Salary</h3>
-
-            <h3>24/02/2000</h3>
-          </div>
-        </div>
-        <div className="trans-amount">
-          <p>+90000</p>
-        </div>
-        <div className="action-btns">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-  )
-}
+  );
+};

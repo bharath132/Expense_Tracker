@@ -1,0 +1,12 @@
+const mongoose = require('mongoose')
+
+const TranscationSchema = new mongoose.Schema({
+    name:String,
+    type:String,
+    desc:String,
+    amount:Number,
+})
+
+const TranscationList = mongoose.model('TranscationList',TranscationSchema)
+
+module.exports=TranscationList
