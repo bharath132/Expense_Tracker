@@ -12,9 +12,14 @@ function DashButton() {
   function Handlebtn(e) {
     navigator(`/${e.target.text}`);
   }
+  if(location.pathname=='/'){
+    location.pathname='/Dashboard'
+  }
   return (
+    
     <div className="navbar--links">
       {dashbtn.map((btn) => (
+        
         <a href={`/${btn.name}`}
           key={btn.name}
           className={`dashbtns ${

@@ -5,7 +5,8 @@ const mongoose= require('mongoose')
 
 app.use(express.json());
 app.use(cors());
-const Transcationlist = require('./models/list')
+const Transcationlist = require('./models/list');
+const CategoryList = require('./models/categoryList');
 mongoose.connect('mongodb://127.0.0.1:27017/Expense_tracker')
 
 app.get('/',(req,res)=>{
@@ -25,6 +26,25 @@ app.post('/createTranscationList',(req,res)=>{
   Transcationlist.create({name,desc,amount,type}).then((list)=>{
     res.json(list)
   })
+})
+app.put('/updateTranscationList',(req,res)=>{
+  const {name,amount,desc,type,id}=req.body
+  Transcationlist.updateOne({_id:id},{name,amount,desc,type}).then((updateList)=>{
+    res.json(updateList)
+  })
+})
+app.delete('/deleteTranscationList',(req,res)=>{
+  const id=req.body
+  Transcationlist.deleteOne({_id: new mongoose.Types.ObjectId(id)}).then((result)=>{
+    res.send(result)
+  })
+})
+
+
+// Category List APIs
+
+AppleIcon.post("createCategoryList",(req,rrse)=>{
+  CategoryList
 })
 
 app.listen(3000,()=>{

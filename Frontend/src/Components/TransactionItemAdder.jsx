@@ -25,7 +25,7 @@ export const TransactionItemAdder = ({sendDataToParent}) => {
     <input type="select" placeholder="Enter Amount"
     onChange={(e) => setName({...name,amount:e.target.value})} />
     <div className="btns">
-      <button className="btn--secondary">cancel</button>
+      <button className="btn--secondary" onClick={()=>{sendDataToParent(true);}}>cancel</button>
       <button className="addbtn" onClick={handleSave} >
         save
       </button>

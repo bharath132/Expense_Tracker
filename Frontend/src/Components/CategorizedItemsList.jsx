@@ -10,8 +10,8 @@ export const CategorizedItemsList = () => {
             <h5 className="type income">{list.type}</h5>
           </div>
           <div className="action">
-            <i class="fa-solid fa-pen-to-square edit"></i>
-            <i class="fa-solid fa-trash del"></i>
+            <i className="fa-solid fa-pen-to-square edit"></i>
+            <i className="fa-solid fa-trash del"></i>
           </div>
         </div>
       ))}
@@ -21,8 +21,8 @@ export const CategorizedItemsList = () => {
           <h5 className="type income">Income</h5>
         </div>
         <div className="action">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
+          <i className="fa-solid fa-pen-to-square edit"></i>
+          <i className="fa-solid fa-trash del"></i>
         </div>
       </div>
       <div className="categorize--item">
@@ -31,8 +31,8 @@ export const CategorizedItemsList = () => {
           <h5 className="type">Expense</h5>
         </div>
         <div className="action">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
+          <i className="fa-solid fa-pen-to-square edit"></i>
+          <i className="fa-solid fa-trash del"></i>
         </div>
       </div>
       <div className="categorize--item">
@@ -41,8 +41,8 @@ export const CategorizedItemsList = () => {
           <h5 className="type income">Income</h5>
         </div>
         <div className="action">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
+          <i className="fa-solid fa-pen-to-square edit"></i>
+          <i className="fa-solid fa-trash del"></i>
         </div>
       </div>
       <div className="categorize--item">
@@ -51,8 +51,8 @@ export const CategorizedItemsList = () => {
           <h5 className="type">Expense</h5>
         </div>
         <div className="action">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
+          <i className="fa-solid fa-pen-to-square edit"></i>
+          <i className="fa-solid fa-trash del"></i>
         </div>
       </div>
       <div className="categorize--item">
@@ -61,8 +61,8 @@ export const CategorizedItemsList = () => {
           <h5 className="type income">Income</h5>
         </div>
         <div className="action">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
+          <i className="fa-solid fa-pen-to-square edit"></i>
+          <i className="fa-solid fa-trash del"></i>
         </div>
       </div>
       <div className="categorize--item">
@@ -71,8 +71,8 @@ export const CategorizedItemsList = () => {
           <h5 className="type">Expense</h5>
         </div>
         <div className="action">
-          <i class="fa-solid fa-pen-to-square edit"></i>
-          <i class="fa-solid fa-trash del"></i>
+          <i className="fa-solid fa-pen-to-square edit"></i>
+          <i className="fa-solid fa-trash del"></i>
         </div>
       </div>
     </div>

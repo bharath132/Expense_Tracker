@@ -22,7 +22,7 @@ function Slidebar() {
           </div>
 
           <div className="settings">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
             <button className="settings--title">Sign Out</button>
           </div>
         </div>

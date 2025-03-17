@@ -23,8 +23,8 @@ export const TranscationItemsList = () => {
   }, []);
   return (
     <div className="Transactiom--con">
-      {TransactiomList.map((list) => (
-        <div className="Transactiom--table">
+      {TransactiomList.map((list,index) => (
+        <div className="Transactiom--table" key={index}>
           <div className="trans-item">
             <div className="Trans-info">
               <div className="trans-title">
@@ -41,8 +41,8 @@ export const TranscationItemsList = () => {
               <p>{list.amount}</p>
             </div>
             <div className="action-btns">
-              <i class="fa-solid fa-pen-to-square edit"></i>
-              <i class="fa-solid fa-trash del"></i>
+              <i className="fa-solid fa-pen-to-square edit"></i>
+              <i className="fa-solid fa-trash del"></i>
             </div>
           </div>
         </div>
