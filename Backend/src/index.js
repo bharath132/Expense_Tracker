@@ -36,15 +36,18 @@ app.put('/updateTranscationList',(req,res)=>{
 app.delete('/deleteTranscationList',(req,res)=>{
   const id=req.body
   Transcationlist.deleteOne({_id: new mongoose.Types.ObjectId(id)}).then((result)=>{
-    res.send(result)
+    res.json(result)
   })
 })
 
 
 // Category List APIs
 
-AppleIcon.post("createCategoryList",(req,rrse)=>{
-  CategoryList
+app.post("/createCategoryList",(req,res)=>{
+  const {name,type}=req.body
+  CategoryList.create({name,type}).then((result)=>{
+    res.json(result)
+  })
 })
 
 app.listen(3000,()=>{
