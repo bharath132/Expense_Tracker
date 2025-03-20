@@ -4,10 +4,11 @@ export const CategoryItemAdder = ({ sendDataToParent }) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const handleSave = () => {
+    sendDataToParent(true);
     axios.post('http://localhost:3000/createCategoryList',{name,type}).then((res)=>{
       console.log(res)
     })
-    sendDataToParent(true);
+    // sendDataToParent(true);
   };
   return (
     <div className="categoryAdd-container">

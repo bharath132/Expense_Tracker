@@ -6,7 +6,9 @@ export const TransactionItemAdder = ({sendDataToParent}) => {
     const handleSave = () => {
       console.log();
       sendDataToParent(true);
-      axios.post('http://localhost:3000/createTranscationList',{name})
+      axios.post('http://localhost:3000/createTranscationList',{name}).then((result)=>{
+        console.log(result)
+      })
     };
   return (
     <div className="categoryAdd-container">

@@ -23,8 +23,9 @@ app.post('/getTranscationList',(req,res)=>{
   });})
 app.post('/createTranscationList',(req,res)=>{
   console.log(req.body)
-  const {name}=req.body
-  Transcationlist.create({name}).then((list)=>{
+  const {name,desc,amount,type}=req.body.name
+  // res.json(req.body.name)
+  Transcationlist.create({name,desc,amount,type}).then((list)=>{
     res.json(list)
   })
 })
