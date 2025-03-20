@@ -1,24 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const TransactiomList = [
-  {
-    amount: "jyug",
-    desc: "ds",
-    name: "dwa",
-    type: "rgrg",
-  },
-  {
-    amount: "jyug",
-    desc: "ds",
-    name: "dwa",
-    type: "rgrg",
-  },
-];
 export const TranscationItemsList = () => {
+  const [TransactiomList,setTransactiomList]=useState([])
   useEffect(() => {
     axios.post("http://localhost:3000/getTranscationList").then((res) => {
-      console.log(res.data);
+      setTransactiomList(res.data)
     });
   }, []);
   return (

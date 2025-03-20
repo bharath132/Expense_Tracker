@@ -4,9 +4,9 @@ export const TransactionItemAdder = ({sendDataToParent}) => {
     const [name, setName] = useState({});
     const [type, setType] = useState("");
     const handleSave = () => {
-      console.log(name);
+      console.log();
       sendDataToParent(true);
-      axios.post('https:localhost:3000/createTranscationList',{name})
+      axios.post('http://localhost:3000/createTranscationList',{name})
     };
   return (
     <div className="categoryAdd-container">
@@ -22,7 +22,7 @@ export const TransactionItemAdder = ({sendDataToParent}) => {
     />
     <input type="select" placeholder="Enter Type"
     onChange={(e) => setName({...name,type:e.target.value})} />
-    <input type="select" placeholder="Enter Amount"
+    <input type="number" placeholder="Enter Amount"
     onChange={(e) => setName({...name,amount:e.target.value})} />
     <div className="btns">
       <button className="btn--secondary" onClick={()=>{sendDataToParent(true);}}>cancel</button>

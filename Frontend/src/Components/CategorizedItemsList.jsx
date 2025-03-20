@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import data from "./datas";
+import axios from "axios";
 export const CategorizedItemsList = () => {
+  const [categoryList,setCategoryList]=useState([])
+  useEffect(()=>{
+    axios.get('http://localhost:3000/getCategoriryList').then((res)=>{
+      setCategoryList(res.data)
+    })
+    console.log('dwjh')
+  },[])
   return (
     <div className="category_container">
-      {data.map((list) => (
-        <div key={list.name} className="categorize--item">
+      {categoryList.map((list,index) => (
+        <div key={index} className="categorize--item">
           <div className="row-info">
             <h3>{list.name}</h3>
-            <h5 className="type income">{list.type}</h5>
+            <h5 className={`type ${list.type=='income'?'income':''}`}>{list.type}</h5>
           </div>
           <div className="action">
             <i className="fa-solid fa-pen-to-square edit"></i>
@@ -15,7 +23,7 @@ export const CategorizedItemsList = () => {
           </div>
         </div>
       ))}
-      <div className="categorize--item">
+      {/* <div className="categorize--item">
         <div className="row-info">
           <h3>Salary</h3>
           <h5 className="type income">Income</h5>
@@ -74,7 +82,7 @@ export const CategorizedItemsList = () => {
           <i className="fa-solid fa-pen-to-square edit"></i>
           <i className="fa-solid fa-trash del"></i>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

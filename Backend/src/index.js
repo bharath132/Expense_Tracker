@@ -22,8 +22,9 @@ app.post('/getTranscationList',(req,res)=>{
     }
   });})
 app.post('/createTranscationList',(req,res)=>{
-  const {name,amount,desc,type}=req.body
-  Transcationlist.create({name,desc,amount,type}).then((list)=>{
+  console.log(req.body)
+  const {name}=req.body
+  Transcationlist.create({name}).then((list)=>{
     res.json(list)
   })
 })
@@ -42,7 +43,12 @@ app.delete('/deleteTranscationList',(req,res)=>{
 
 
 // Category List APIs
-
+app.get('/getCategoriryList',(req,res)=>{
+  CategoryList.find({}).then((result)=>{
+    // console.log(result)
+    res.json(result)
+  })
+})
 app.post("/createCategoryList",(req,res)=>{
   const {name,type}=req.body
   CategoryList.create({name,type}).then((result)=>{
