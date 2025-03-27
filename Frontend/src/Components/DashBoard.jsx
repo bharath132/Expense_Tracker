@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import { LayoutDashboard, Receipt, PieChart, Settings, LogOut, Plus } from 'lucide-react';
 import { TranscationItemsList } from "./TranscationItemsList";
-export const DashBoard = () => {
+let Balance;
+let Income;
+let Expense;
 
+export const DashBoard = () => {
+useEffect()
   const chartData = [
     { month: 'Jan', amount: 1100 , expense : 100},
     { month: 'Feb', amount: 1400 , expense : 200},

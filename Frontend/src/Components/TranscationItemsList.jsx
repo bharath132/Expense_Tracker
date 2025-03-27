@@ -1,22 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { data } from "react-router-dom";
 
 export const TranscationItemsList = () => {
-  const [TransactiomList,setTransactiomList]=useState([])
+  const [TransactiomList, setTransactiomList] = useState([]);
   useEffect(() => {
     axios.post("http://localhost:3000/getTranscationList").then((res) => {
-      setTransactiomList(res.data)
+      setTransactiomList(res.data);
     });
   }, []);
   return (
     <div className="Transactiom--con">
-      {TransactiomList.map((list,index) => (
+      {TransactiomList.map((list, index) => (
         <div className="Transactiom--table" key={index}>
           <div className="trans-item">
             <div className="Trans-info">
               <div className="trans-title">
                 <h3>{list.name}</h3>
-                <h3 className="type">{list.type}</h3>
+                <h3 className={`type ${list.type}`}>{list.type}</h3>
               </div>
               <div className="tans-desc">
                 <h3>{list.desc}</h3>

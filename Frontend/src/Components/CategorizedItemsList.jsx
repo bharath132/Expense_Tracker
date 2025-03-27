@@ -15,7 +15,7 @@ export const CategorizedItemsList = () => {
         <div key={index} className="categorize--item">
           <div className="row-info">
             <h3>{list.name}</h3>
-            <h5 className={`type ${list.type=='income'?'income':''}`}>{list.type}</h5>
+            <h5 className={`type ${list.type}`}>{list.type}</h5>
           </div>
           <div className="action">
             <i className="fa-solid fa-pen-to-square edit"></i>
