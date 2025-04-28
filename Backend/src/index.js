@@ -7,7 +7,7 @@ app.use(express.json());
 
 const corsOptions = {
   origin: [
-    "https://expense-tracker-frontend-one-sooty.vercel.app", // Frontend URL
+    "https://expense-tracker-frontend-one-sooty.vercel.app/" // Frontend URL
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
