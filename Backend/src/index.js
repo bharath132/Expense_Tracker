@@ -75,6 +75,4 @@ app.delete("/deleteCategoryList", (req, res) => {
   const id = req.body;
   CategoryList.deleteOne({ _id: new mongoose.Types.ObjectId(id) });
 });
-app.listen(3000, () => {
-  console.log("server started on port 5000");
-});
+module.exports = app;
