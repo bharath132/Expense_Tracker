@@ -6,7 +6,9 @@ app.use(express.json());
 
 const corsOptions = {
   origin: [
-    "https://expense-tracker-frontend-one-sooty.vercel.app/" // Frontend URL
+    "https://expense-tracker-frontend-one-sooty.vercel.app/",
+     // Frontend URL
+    "http://localhost:3000", // Localhost URL
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
