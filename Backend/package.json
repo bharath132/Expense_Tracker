@@ -4,6 +4,7 @@
     "nodemon": "^3.1.9"
   },
   "scripts": {
-    "dev": "cd src && nodemon index.js"
+    "dev": "cd src && nodemon index.js",
+    "Build": "cd src && nodemon index.js"
   }
 }
