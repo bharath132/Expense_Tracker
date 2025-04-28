@@ -5,6 +5,6 @@
   },
   "scripts": {
     "dev": "cd src && nodemon index.js",
-    "Build": "cd src && nodemon index.js"
+    "build": "cd src && nodemon index.js"
   }
 }
