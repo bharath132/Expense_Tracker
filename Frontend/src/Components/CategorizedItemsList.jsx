@@ -3,11 +3,11 @@ import data from "./datas";
 import axios from "axios";
 export const CategorizedItemsList = () => {
   const [categoryList,setCategoryList]=useState([])
-  const appurl = import.meta.env;  
+  const appurl = import.meta.env.VITE_API_URL;  
   useEffect(()=>{
-    axios.get('http://localhost:3000/getCategoriryList').then((res)=>{
+    axios.get(`${import.meta.env.VITE_API_URL}/getCategoriryList`).then((res)=>{
       setCategoryList(res.data)
-      console.log(appurl)
+   
     })
     console.log('dwjh')
   },[])

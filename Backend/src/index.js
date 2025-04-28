@@ -4,7 +4,7 @@ const app = express()
 const mongoose= require('mongoose')
 
 app.use(express.json());
-
+app.use(cors())
 const Transcationlist = require('./models/list');
 const CategoryList = require('./models/categoryList');
 mongoose.connect('mongodb://127.0.0.1:27017/Expense_tracker')

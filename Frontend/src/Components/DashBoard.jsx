@@ -12,7 +12,7 @@ import { TranscationItemsList } from "./TranscationItemsList";
 import axios from "axios";
 let Balance = 0;
 let Income = 0;
-let Expense =0 ;
+let Expense = 0;
 
 export const DashBoard = () => {
   const chartData = [
@@ -24,20 +24,20 @@ export const DashBoard = () => {
   ];
   const [TransactiomList, setTransactiomList] = useState([]);
   useEffect(() => {
-    axios.post("http://localhost:3000/getTranscationList").then((res) => {
-      setTransactiomList(res.data);
-      console.log(res.data);
-    });
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/getTranscationList`)
+      .then((res) => {
+        setTransactiomList(res.data);
+        console.log(res.data);
+      });
   }, []);
   TransactiomList.map((list) => {
-    if (list.type==='expense') {
-
-      Expense+= Number(list.amount)
-      console.log(Expense)
-    }
-    else{
-      Income += Number(list.amount)
-      console.log(Income)
+    if (list.type === "expense") {
+      Expense += Number(list.amount);
+      console.log(Expense);
+    } else {
+      Income += Number(list.amount);
+      console.log(Income);
     }
   });
 
@@ -54,7 +54,7 @@ export const DashBoard = () => {
           </div>
           <div className="dash_desc">
             <h1>Balance</h1>
-            <p>${Income-Expense}</p>
+            <p>${Income - Expense}</p>
           </div>
         </div>
         <div className="dash_box box2">

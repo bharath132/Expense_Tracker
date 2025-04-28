@@ -5,9 +5,11 @@ import { data } from "react-router-dom";
 export const TranscationItemsList = () => {
   const [TransactiomList, setTransactiomList] = useState([]);
   useEffect(() => {
-    axios.post("http://localhost:3000/getTranscationList").then((res) => {
-      setTransactiomList(res.data);
-    });
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/getTranscationList`)
+      .then((res) => {
+        setTransactiomList(res.data);
+      });
   }, []);
   return (
     <div className="Transactiom--con">

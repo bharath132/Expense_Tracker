@@ -6,7 +6,10 @@ export const CategoryItemAdder = ({ sendDataToParent }) => {
   const handleSave = () => {
     sendDataToParent(true);
     axios
-      .post("http://localhost:3000/createCategoryList", { name, type })
+      .post(`${import.meta.env.VITE_API_URL}/createCategoryList`, {
+        name,
+        type,
+      })
       .then((res) => {
         console.log(res);
       });
@@ -19,7 +22,11 @@ export const CategoryItemAdder = ({ sendDataToParent }) => {
         placeholder="Enter Category Name"
         onChange={(e) => setName(e.target.value)}
       />
-      <select  onChange={(e) => {setType(e.target.value)}}>
+      <select
+        onChange={(e) => {
+          setType(e.target.value);
+        }}
+      >
         <option value="income">Income</option>
         <option value="expense">Expense</option>
       </select>
