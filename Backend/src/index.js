@@ -7,7 +7,8 @@ app.use(express.json());
 app.use(cors())
 const Transcationlist = require('./models/list');
 const CategoryList = require('./models/categoryList');
-mongoose.connect('mongodb://127.0.0.1:27017/Expense_tracker')
+mongoose.connect('mongodb+srv://chidambaramb2:wT2Y8atoYKQWdz6K@expense-tracker.xkaku5j.mongodb.net/?retryWrites=true&w=majority&appName=expense-tracker')
+
 
 app.get('/',(req,res)=>{
     res.send('HELLO WORLD')
