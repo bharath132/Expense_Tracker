@@ -4,7 +4,11 @@ const app = express()
 const mongoose= require('mongoose')
 
 app.use(express.json());
-app.use(cors())
+const corsOptions = {
+  origin: 'https://expense-tracker-frontend-one-sooty.vercel.app',
+};
+
+app.use(cors(corsOptions));
 const Transcationlist = require('./models/list');
 const CategoryList = require('./models/categoryList');
 mongoose.connect('mongodb+srv://chidambaramb2:wT2Y8atoYKQWdz6K@expense-tracker.xkaku5j.mongodb.net/expense_tracker?retryWrites=true&w=majority&appName=expense-tracker')
