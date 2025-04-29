@@ -14,7 +14,7 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
   };
   useEffect(() => {
     axios
-      .get("${import.meta.env.VITE_API_URL}/getCategoriryList")
+      .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)
       .then((res) => {
         setcategoryList(res.data);
         console.log(res.data);
