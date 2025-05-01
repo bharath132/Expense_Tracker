@@ -17,9 +17,13 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
       .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)
       .then((res) => {
         setcategoryList(res.data);
-        console.log(res.data);
+        setName({...name, name:res.data[0].name , type:res.data[0].type});
       });
   }, []);
+  const HandleCategory = (e) =>{
+    setName({ ...name, name: e.target.value })
+    console.log(categoryList[1].name.includes('salary'));
+  }
   // const categoryList=['food','travel']
   return (
     <div className="categoryAdd-container">
@@ -32,7 +36,7 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
         name=""
         id=""
         placeholder="Enter Category Name"
-        onChange={(e) => setName({ ...name, name: e.target.value })}
+        onChange={HandleCategory}
       >
         {categoryList.map((list, index) => (
           <option value={list.name} key={index}>
@@ -50,7 +54,7 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
           setName({ ...name, type: e.target.value });
         }}
       >
-        <option value="income">Income</option>
+        <option value="income">{name.type}</option>
         <option value="expense">Expense</option>
       </select>
       <input

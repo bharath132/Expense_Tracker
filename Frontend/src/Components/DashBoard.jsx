@@ -35,8 +35,10 @@ export const DashBoard = () => {
     if (list.type === "expense") {
       Expense += Number(list.amount);
       console.log(Expense);
-    } else {
+    } else if(list.type === "income") {
       Income += Number(list.amount);
+      console.log(list.amount);
+      
       console.log(Income);
     }
   });
@@ -54,7 +56,7 @@ export const DashBoard = () => {
           </div>
           <div className="dash_desc">
             <h1>Balance</h1>
-            <p>${Income - Expense}</p>
+            <p>${Number(Income) - Number(Expense)}</p>
           </div>
         </div>
         <div className="dash_box box2">
@@ -63,7 +65,7 @@ export const DashBoard = () => {
           </div>
           <div className="dash_desc">
             <h1>Income</h1>
-            <p>${Income}</p>
+            <p>${Number(Income)}</p>
           </div>
         </div>
         <div className="dash_box box3">
@@ -72,7 +74,7 @@ export const DashBoard = () => {
           </div>
           <div className="dash_desc">
             <h1>Expense</h1>
-            <p>${Expense}</p>
+            <p>${Number(Expense)}</p>
           </div>
         </div>
       </div>
