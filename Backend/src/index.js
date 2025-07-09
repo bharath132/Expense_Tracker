@@ -25,7 +25,9 @@ app.post("/getTranscationList", (req, res) => {
 app.post("/createTranscationList", (req, res) => {
   console.log(req.body);
   const { name, desc, amount, type } = req.body.name;
-  // res.json(req.body.name)
+  if (!amount){
+    amount = 0;
+  }
   Transcationlist.create({ name, desc, amount, type }).then((list) => {
     res.json(list);
   });
