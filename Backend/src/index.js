@@ -24,9 +24,9 @@ app.post("/getTranscationList", (req, res) => {
 });
 app.post("/createTranscationList", (req, res) => {
   console.log(req.body);
-  const { name, desc, amount, type } = req.body.name;
+  const { name, desc, amount, type } = req.body;
   if (!amount){
-    amount = 0;
+
   }
   Transcationlist.create({ name, desc, amount, type }).then((list) => {
     res.json(list);
@@ -77,4 +77,6 @@ app.delete("/deleteCategoryList", (req, res) => {
   const id = req.body;
   CategoryList.deleteOne({ _id: new mongoose.Types.ObjectId(id) });
 });
-module.exports = app;
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
+});

@@ -1,16 +1,15 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const TranscationSchema = new mongoose.Schema({
-    name:String,
-    type:String,
-    desc:String,
-    amount:{
-        type:Number,
-        required:true,
-        default:0,
-    },
-})
+  name: String,
+  type: String,
+  desc: String,
+  amount: {
+    type: Number,
+    default: 0
+  },
+});
 
-const TranscationList = mongoose.model('TranscationList',TranscationSchema)
+const TranscationList = mongoose.model("TranscationList", TranscationSchema);
 
-module.exports=TranscationList
+module.exports = TranscationList;
