@@ -1,19 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { data } from "react-router-dom";
-
-export const TranscationItemsList = () => {
-  const [TransactiomList, setTransactiomList] = useState([]);
-  useEffect(() => {
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/getTranscationList`)
-      .then((res) => {
-        setTransactiomList(res.data);
-      });
-  }, []);
+export const TranscationItemsList = ({ transactions = [] }) => {
   return (
     <div className="Transactiom--con">
-      {TransactiomList.map((list, index) => (
+      {transactions.map((list, index) => (
         <div className="Transactiom--table" key={index}>
           <div className="trans-item">
             <div className="Trans-info">
@@ -23,8 +11,7 @@ export const TranscationItemsList = () => {
               </div>
               <div className="tans-desc">
                 <h3>{list.desc}</h3>
-
-                <h3>24/02/2000</h3>
+                <h3>24/02/2000</h3> {/* You can replace this with list.date */}
               </div>
             </div>
             <div className="trans-amount">

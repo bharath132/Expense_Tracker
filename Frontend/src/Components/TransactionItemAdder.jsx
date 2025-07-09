@@ -5,13 +5,15 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
   const [categoryList, setcategoryList] = useState([]);
   const handleSave = () => {
     console.log();
-    sendDataToParent(true);
+    
     axios
       .post(`${import.meta.env.VITE_API_URL}/createTranscationList`, { name:name.name , desc: name.desc, amount: name.amount, type: name.type })
       .then((result) => {
         console.log(result);
-      });
-  };
+      }).then(() => {
+        sendDataToParent(true)});   
+      }
+ 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)

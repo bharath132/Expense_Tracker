@@ -11,6 +11,15 @@ export const CategorizedItemsList = () => {
     })
     console.log('dwjh')
   },[])
+  const HandleDelete = (id) => {
+    console.log(id)
+    axios
+      .delete(`${import.meta.env.VITE_API_URL}/deleteCategoryList`, {
+        id,
+      }).catch((err)=>{
+        console.log(err)
+      })
+    }
   return (
     <div className="category_container">
       {categoryList.map((list,index) => (
@@ -21,7 +30,7 @@ export const CategorizedItemsList = () => {
           </div>
           <div className="action">
             <i className="fa-solid fa-pen-to-square edit"></i>
-            <i className="fa-solid fa-trash del"></i>
+            <i className="fa-solid fa-trash del" onClick={()=>HandleDelete(list._id)}> </i>
           </div>
         </div>
       ))}

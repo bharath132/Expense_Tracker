@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { set } from "mongoose";
 export const CategoryItemAdder = ({ sendDataToParent }) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("income");
+  // const [categoryList, setcategoryList] = useState([]);
+  const [error, setError] = useState("");
   const handleSave = () => {
-    sendDataToParent(true);
+    if (name === "") {
+      setError("Please enter a category name");
+      return;
+    }
     axios
       .post(`${import.meta.env.VITE_API_URL}/createCategoryList`, {
         name,
@@ -12,6 +18,7 @@ export const CategoryItemAdder = ({ sendDataToParent }) => {
       })
       .then((res) => {
         console.log(res);
+        sendDataToParent(true);
       });
     // sendDataToParent(true);
   };
@@ -20,8 +27,10 @@ export const CategoryItemAdder = ({ sendDataToParent }) => {
       <input
         type="text"
         placeholder="Enter Category Name"
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {setName(e.target.value); setError("");}}
+        required
       />
+      {error && <p className="error">{error}</p>}
       <select
         onChange={(e) => {
           setType(e.target.value);
@@ -39,7 +48,7 @@ export const CategoryItemAdder = ({ sendDataToParent }) => {
         >
           cancel
         </button>
-        <button className="addbtn" onClick={handleSave}>
+        <button type="submit" className="addbtn" onClick={handleSave}>
           save
         </button>
       </div>

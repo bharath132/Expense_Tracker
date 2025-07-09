@@ -1,10 +1,13 @@
 .Transaction {
+  height: 95vh;
   margin: 20px;
   flex-grow: 1;
   border-radius: 20px;
   box-sizing: border-box;
   background-color: #ffffff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+
   .title {
     padding: 0;
     /* height: 100px; */
@@ -45,8 +48,10 @@
 }
 .Transactiom--con {
  margin-top: 20px; 
+ margin-bottom: 40px;
   /* box-shadow: 0 0 8px rgba(80, 79, 79, 0.2); */
   border-radius: 20px;
+ 
   width: 90%;
 }
 

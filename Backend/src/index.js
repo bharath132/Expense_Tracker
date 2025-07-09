@@ -58,7 +58,9 @@ app.get("/getCategoriryList", (req, res) => {
   });
 });
 app.post("/createCategoryList", (req, res) => {
+
   const { name, type } = req.body;
+  
   CategoryList.create({ name, type }).then((result) => {
     res.json(result);
   });
@@ -68,14 +70,17 @@ app.put("/updateCategoryList", (req, res) => {
   const { id, name, type } = req.body;
   CategoryList.updateOne(
     { _id: new mongoose.Types.ObjectId(id) },
-    { anme, type }
+    { name, type }
   ).then((result) => {
     res.json(result);
   });
 });
 app.delete("/deleteCategoryList", (req, res) => {
   const id = req.body;
-  CategoryList.deleteOne({ _id: new mongoose.Types.ObjectId(id) });
+  console.log(id);
+  CategoryList.deleteOne({ _id: new mongoose.Types.ObjectId(id) }).then((result) => {
+    res.json(result)  ;
+  });
 });
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
