@@ -24,7 +24,7 @@ app.post("/getTranscationList", (req, res) => {
 });
 app.post("/createTranscationList", (req, res) => {
   console.log(req.body);
-  const { name, desc, amount, type } = req.body.name;
+  const { name, desc, amount, type } = req.body;
   if (!amount){
 
   }

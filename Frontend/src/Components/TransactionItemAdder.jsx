@@ -7,7 +7,7 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
     console.log();
     sendDataToParent(true);
     axios
-      .post(`${import.meta.env.VITE_API_URL}/createTranscationList`, { name })
+      .post(`${import.meta.env.VITE_API_URL}/createTranscationList`, { name:name.name , desc: name.desc, amount: name.amount, type: name.type })
       .then((result) => {
         console.log(result);
       });
