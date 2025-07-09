@@ -10,6 +10,7 @@ import {
 
 import { TranscationItemsList } from "./TranscationItemsList";
 import axios from "axios";
+import LoadingCircle from "./LoadingCircle";
 let Balance = 0;
 let Income = 0;
 let Expense = 0;
@@ -23,12 +24,14 @@ export const DashBoard = () => {
     { month: "May", amount: 1500, expense: 300 },
   ];
   const [TransactiomList, setTransactiomList] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .post(`${import.meta.env.VITE_API_URL}/getTranscationList`)
       .then((res) => {
         setTransactiomList(res.data);
         console.log(res.data);
+        setLoading(false);
       });
   }, []);
   TransactiomList.map((list) => {
@@ -53,7 +56,10 @@ export const DashBoard = () => {
   });
 
   return (
-    <div className="main-section">
+    <>
+    {
+      loading ? <LoadingCircle/> : (
+<div className="main-section">
       <div className="title">
         <h1>Dashboard</h1>
       </div>
@@ -125,5 +131,9 @@ export const DashBoard = () => {
         <TranscationItemsList />
       </div>
     </div>
+
+      )
+    }
+    </>
   );
 };
