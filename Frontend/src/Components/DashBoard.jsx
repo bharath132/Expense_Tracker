@@ -34,11 +34,19 @@ export const DashBoard = () => {
   TransactiomList.map((list) => {
     console.log(list.type);
     if (list.type === "expense") {
-      
+      Balance -= list.amount;
+      Expense += list.amount;
+      chartData.push({
+        
+        expense: list.amount,
+      });
       console.log(list.amount);
     } else if(list.type === "income") {
-      
-      console.log(list.amount);
+      Balance += list.amount;
+      Income += list.amount;
+      chartData.push({
+        amount: list.amount,
+      });
       
       
     }
@@ -82,7 +90,7 @@ export const DashBoard = () => {
       <div className="dash-chart-1">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
-            <XAxis dataKey="month" />
+            <XAxis dataKey="" />
             <YAxis />
             <Tooltip />
             <Line
@@ -90,12 +98,23 @@ export const DashBoard = () => {
               dataKey="amount"
               stroke="#2563eb"
               strokeWidth={2}
+              // dot={false}
+              activeDot={{ r: 8 }}
+              isAnimationActive={false}
+              animationDuration={1000}
+              animationEasing="ease-in-out"
+              animationBegin={0}
+              animationId={1}
+              animationTimingFunction="ease-in-out"
+              
             />
             <Line
               type="monotone"
               dataKey="expense"
               stroke="red"
               strokeWidth={4}
+              // dot={false}
+              activeDot={{ r: 2  }}
             />
           </LineChart>
         </ResponsiveContainer>

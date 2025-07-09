@@ -8,6 +8,10 @@ const TranscationSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  date: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 const TranscationList = mongoose.model("TranscationList", TranscationSchema);

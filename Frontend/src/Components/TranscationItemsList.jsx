@@ -1,4 +1,43 @@
-export const TranscationItemsList = ({ transactions = [] }) => {
+import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+export const TranscationItemsList = ({  }) => {
+  const [transactions, setTransactions] = useState([]);
+  const refresh=() => {
+
+      axios
+      .post(`${import.meta.env.VITE_API_URL}/getTranscationList`)
+      .then((res) => {
+        
+        // Assuming res.data is the transaction list
+        setTransactions(res.data); // Update the transactions state with the fetched data
+        // You can set the transactions state here if needed
+      })
+      .catch((err) => {
+        console.error("Error fetching transaction list:", err);
+      });
+  }
+  useEffect(() => {
+    refresh();
+
+  
+  }, []);
+  const HanleDelete = (id) => {
+    
+    axios
+      .delete(`${import.meta.env.VITE_API_URL}/deleteTranscationList`, {
+        data: { id: id },
+      })
+      .catch((err) => {
+        console.log(err);
+
+      })
+      .then((res) => {
+        
+        refresh();
+        // Optionally, you can refresh the transaction list here
+      });
+  };
   return (
     <div className="Transactiom--con">
       {transactions.map((list, index) => (
@@ -19,7 +58,7 @@ export const TranscationItemsList = ({ transactions = [] }) => {
             </div>
             <div className="action-btns">
               <i className="fa-solid fa-pen-to-square edit"></i>
-              <i className="fa-solid fa-trash del"></i>
+              <i className="fa-solid fa-trash del" onClick={()=> HanleDelete(list._id) }></i>
             </div>
           </div>
         </div>

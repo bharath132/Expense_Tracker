@@ -2,27 +2,34 @@ import React, { useEffect, useState } from "react";
 import data from "./datas";
 import axios from "axios";
 export const CategorizedItemsList = () => {
-  const [categoryList,setCategoryList]=useState([])
-  const appurl = import.meta.env.VITE_API_URL;  
-  useEffect(()=>{
-    axios.get(`${import.meta.env.VITE_API_URL}/getCategoriryList`).then((res)=>{
-      setCategoryList(res.data)
-   
-    })
-    console.log('dwjh')
-  },[])
+  const [categoryList, setCategoryList] = useState([]);
+
+  useEffect(() => {
+    FetchData();
+  }, []);
   const HandleDelete = (id) => {
-    console.log(id)
     axios
       .delete(`${import.meta.env.VITE_API_URL}/deleteCategoryList`, {
-        id,
-      }).catch((err)=>{
-        console.log(err)
+        data: { id: id },
       })
-    }
+      .catch((err) => {
+        console.log(err);
+      })
+      .then((res) => {
+        console.log(res);
+        FetchData();
+      });
+  };
+  const FetchData = () => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)
+      .then((res) => {
+        setCategoryList(res.data);
+      });
+  };
   return (
     <div className="category_container">
-      {categoryList.map((list,index) => (
+      {categoryList.map((list, index) => (
         <div key={index} className="categorize--item">
           <div className="row-info">
             <h3>{list.name}</h3>
@@ -30,7 +37,12 @@ export const CategorizedItemsList = () => {
           </div>
           <div className="action">
             <i className="fa-solid fa-pen-to-square edit"></i>
-            <i className="fa-solid fa-trash del" onClick={()=>HandleDelete(list._id)}> </i>
+            <i
+              className="fa-solid fa-trash del"
+              onClick={() => HandleDelete(list._id)}
+            >
+              {" "}
+            </i>
           </div>
         </div>
       ))}
