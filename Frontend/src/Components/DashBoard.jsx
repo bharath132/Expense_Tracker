@@ -32,14 +32,15 @@ export const DashBoard = () => {
       });
   }, []);
   TransactiomList.map((list) => {
+    console.log(list.type);
     if (list.type === "expense") {
-      Expense += Number(list.amount);
-      console.log(Expense);
+      
+      console.log(list.amount);
     } else if(list.type === "income") {
-      Income += Number(list.amount);
+      
       console.log(list.amount);
       
-      console.log(Income);
+      
     }
   });
 

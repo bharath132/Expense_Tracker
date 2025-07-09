@@ -4,7 +4,11 @@ const TranscationSchema = new mongoose.Schema({
     name:String,
     type:String,
     desc:String,
-    amount:Number,
+    amount:{
+        type:Number,
+        required:true,
+        default:0,
+    },
 })
 
 const TranscationList = mongoose.model('TranscationList',TranscationSchema)
