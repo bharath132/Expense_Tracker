@@ -5,27 +5,30 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
   const [categoryList, setcategoryList] = useState([]);
   const handleSave = () => {
     console.log();
-    
+
     axios
-      .post(`${import.meta.env.VITE_API_URL}/createTranscationList`, { name:name.name , desc: name.desc, amount: name.amount, type: name.type })
+      .post(`${import.meta.env.VITE_API_URL}/createTranscationList`, {
+        name: name.name,
+    
+      })
       .then((result) => {
         console.log(result);
-      }).then(() => {
-        sendDataToParent(true)});   
-      }
- 
+      })
+      
+  };
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)
       .then((res) => {
         setcategoryList(res.data);
-        setName({...name, name:res.data[0].name , type:res.data[0].type});
+        setName({ ...name, name: res.data[0].name, type: res.data[0].type });
       });
   }, []);
-  const HandleCategory = (e) =>{
-    setName({ ...name, name: e.target.value })
-    console.log(categoryList[1].name.includes('salary'));
-  }
+  const HandleCategory = (e) => {
+    setName({ ...name, name: e.target.value });
+    console.log(categoryList[1].name.includes("salary"));
+  };
   // const categoryList=['food','travel']
   return (
     <div className="categoryAdd-container">

@@ -20,7 +20,6 @@ export const CategorizedItemsList = () => {
       .then((res) => {
         console.log(res);
         FetchData();
-        
       });
   };
   const FetchData = () => {
@@ -32,27 +31,30 @@ export const CategorizedItemsList = () => {
       });
   };
   return (
-    
     <>
-{ loading ? <LoadingCircle/> :    (<div className="category_container">
-      {categoryList.map((list, index) => (
-        <div key={index} className="categorize--item">
-          <div className="row-info">
-            <h3>{list.name}</h3>
-            <h5 className={`type ${list.type}`}>{list.type}</h5>
-          </div>
-          <div className="action">
-            <i className="fa-solid fa-pen-to-square edit"></i>
-            <i
-              className="fa-solid fa-trash del"
-              onClick={() => HandleDelete(list._id)}
-            >
-              {" "}
-            </i>
-          </div>
+      {loading ? (
+        <LoadingCircle />
+      ) : (
+        <div className="category_container">
+          {categoryList.map((list, index) => (
+            <div key={index} className="categorize--item">
+              <div className="row-info">
+                <h3>{list.name}</h3>
+                <h5 className={`type ${list.type}`}>{list.type}</h5>
+              </div>
+              <div className="action">
+                <i className="fa-solid fa-pen-to-square edit"></i>
+                <i
+                  className="fa-solid fa-trash del"
+                  onClick={() => HandleDelete(list._id)}
+                >
+                  {" "}
+                </i>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>)}
+      )}
     </>
   );
 };

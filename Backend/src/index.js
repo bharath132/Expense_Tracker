@@ -25,8 +25,7 @@ app.post("/getTranscationList", (req, res) => {
 app.post("/createTranscationList", (req, res) => {
   console.log(req.body);
   const { name, desc, amount, type } = req.body;
-  if (!amount){
-
+  if (!amount) {
   }
   Transcationlist.create({ name, desc, amount, type }).then((list) => {
     res.json(list);
@@ -58,9 +57,8 @@ app.get("/getCategoriryList", (req, res) => {
   });
 });
 app.post("/createCategoryList", (req, res) => {
-
   const { name, type } = req.body;
-  
+
   CategoryList.create({ name, type }).then((result) => {
     res.json(result);
   });
@@ -78,9 +76,11 @@ app.put("/updateCategoryList", (req, res) => {
 app.delete("/deleteCategoryList", (req, res) => {
   const id = req.body;
   console.log(id);
-  CategoryList.deleteOne({ _id: new mongoose.Types.ObjectId(id) }).then((result) => {
-    res.json(result)  ;
-  });
+  CategoryList.deleteOne({ _id: new mongoose.Types.ObjectId(id) }).then(
+    (result) => {
+      res.json(result);
+    }
+  );
 });
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
