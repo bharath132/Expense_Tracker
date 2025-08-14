@@ -9,8 +9,12 @@ export const Transaction = () => {
   const [edit, setedit] = useState(true);
   const [transactionList, setTransactionList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editData, seteditData] = useState(null);
   function handleChildData(data) {
     setedit(data);
+  }
+  function HandleEditData(data) {
+    seteditData(data);
   }
   const fetchTransactions = async () => {
     const res = await axios.post(
@@ -24,10 +28,8 @@ export const Transaction = () => {
     fetchTransactions();
   }, [edit]);
 
-
   return (
-    
-      <div className="Transaction">
+    <div className="Transaction">
       <div className="title">
         <h1>Transaction</h1>
       </div>
@@ -37,11 +39,21 @@ export const Transaction = () => {
             + Add Transaction
           </button>
         </div>
-      { loading ?  ( <LoadingCircle/> ) : ( edit ? (
-          <TranscationItemsList transactions={transactionList} />
+        {loading ? (
+          <LoadingCircle />
+        ) : edit ? (
+          <TranscationItemsList
+            transactions={transactionList}
+            sendDataToParent={handleChildData}
+            EditData={HandleEditData}
+          />
         ) : (
-          <TransactionItemAdder sendDataToParent={handleChildData} />
-        ))}
+          <TransactionItemAdder
+            sendDataToParent={handleChildData}
+            EditData={editData}
+            HandleEditData={HandleEditData}
+          />
+        )}
       </div>
     </div>
   );

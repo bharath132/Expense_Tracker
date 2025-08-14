@@ -1,29 +1,67 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-export const TransactionItemAdder = ({ sendDataToParent }) => {
+export const TransactionItemAdder = ({
+  sendDataToParent,
+  EditData,
+  HandleEditData,
+}) => {
   const [name, setName] = useState({ name: "food", type: "income" });
   const [categoryList, setcategoryList] = useState([]);
-  const handleSave = () => {
+  const handleSave = async () => {
     console.log();
 
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/createTranscationList`, {
-        name: name.name,
-    
-      })
-      .then((result) => {
-        console.log(result);
-      })
-      
+    if (EditData) {
+      await axios
+        .put(`${import.meta.env.VITE_API_URL}/updateTranscationList`, {
+          id: EditData._id,
+          name: name.name,
+          desc: name.desc,
+          type: name.type,
+          amount: name.amount,
+        })
+        .then((result) => {
+          console.log(result);
+          sendDataToParent(true);
+          HandleEditData(null); // Reset edit data after saving
+        });
+    } else {
+      await axios
+        .post(`${import.meta.env.VITE_API_URL}/createTranscationList`, {
+          name: name.name,
+          desc: name.desc,
+          type: name.type,
+          amount: name.amount,
+        })
+        .then((result) => {
+          console.log(result);
+          sendDataToParent(true);
+          HandleEditData(null); // Reset edit data after saving
+        });
+    }
   };
+  const LoadData = async () => {
+    if (EditData) {
+      await axios
+        .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)
+        .then((res) => {
+          setcategoryList(res.data);
+        });
 
+      setName({ ...EditData });
+    } else {
+      axios
+        .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)
+        .then((res) => {
+          setcategoryList(res.data);
+          setName({ ...name, name: res.data[0].name, type: res.data[0].type });
+        });
+    }
+  };
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/getCategoriryList`)
-      .then((res) => {
-        setcategoryList(res.data);
-        setName({ ...name, name: res.data[0].name, type: res.data[0].type });
-      });
+    console.log("useEffect called");
+    console.log(EditData);
+    LoadData();
+    // If EditData is not null, populate the form with the edit data
   }, []);
   const HandleCategory = (e) => {
     setName({ ...name, name: e.target.value });
@@ -40,6 +78,7 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
       <select
         name=""
         id=""
+        value={name.name}
         placeholder="Enter Category Name"
         onChange={HandleCategory}
       >
@@ -52,19 +91,22 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
       <input
         type="text"
         placeholder="Enter Description Name"
+        value={name.desc || ""}
         onChange={(e) => setName({ ...name, desc: e.target.value })}
       />
       <select
+        value={name.type}
         onChange={(e) => {
           setName({ ...name, type: e.target.value });
         }}
       >
-        <option value="income">{name.type}</option>
+        <option value="Income">Income</option>
         <option value="expense">Expense</option>
       </select>
       <input
         type="number"
         placeholder="Enter Amount"
+        value={name.amount || ""}
         onChange={(e) => setName({ ...name, amount: e.target.value })}
       />
       <div className="btns">
@@ -72,6 +114,7 @@ export const TransactionItemAdder = ({ sendDataToParent }) => {
           className="btn--secondary"
           onClick={() => {
             sendDataToParent(true);
+            HandleEditData(null); // Reset edit data when canceling
           }}
         >
           cancel

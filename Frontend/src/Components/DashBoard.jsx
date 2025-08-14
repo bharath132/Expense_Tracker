@@ -8,43 +8,19 @@ import {
   Tooltip,
 } from "recharts";
 
-import { TranscationItemsList } from "./TranscationItemsList";
+import { TranscationItemsListLimited } from "./testing";
 import axios from "axios";
 import LoadingCircle from "./LoadingCircle";
+import { data } from "react-router-dom";
 let Balance = 0;
 let Income = 0;
 let Expense = 0;
 
 export const DashBoard = () => {
-  const chartData = [
-    {
-      date: new Date().toLocaleString("default", { timeZone: "Asia/Kolkata" }),
-      amount: 1000,
-      expense: 0,
-    },
-    {
-      date: new Date().toLocaleString("default", { timeZone: "Asia/Kolkata" }),
-      amount: 0,
-      expense: 0,
-    },
-    {
-      date: new Date().toLocaleString("default", { timeZone: "Asia/Kolkata" }),
-      amount: 0,
-      expense: 0,
-    },
-    {
-      date: new Date().toLocaleString("default", { timeZone: "Asia/Kolkata" }),
-      amount: 0,
-      expense: 0,
-    },
-    {
-      date: new Date().toLocaleString("default", { timeZone: "Asia/Kolkata" }),
-      amount: 0,
-      expense: 0,
-    },
-  ];
+  const chartData = [];
   const [TransactiomList, setTransactiomList] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     axios
       .post(`${import.meta.env.VITE_API_URL}/getTranscationList`)
@@ -54,30 +30,47 @@ export const DashBoard = () => {
         setLoading(false);
       });
   }, []);
-  for (let i of TransactiomList) {
-    let date = new Date();
-    let fromdate = date.setDate(date.getDate() - 30); // Adds 7 days to the current date
-    console.log(date);
-    if (new Date(i.date) > fromdate) {
-      console.log(i);
-      chartData.push({
-        date: new Date(i.date).toLocaleString("default", { time: "none" }),
-        amount: i.amount,
-        expense: i.type === "expense" ? i.amount : 0,
-      });
+  let sampleData = TransactiomList.reduce((acc, item) => {
+    const dateKey = new Date(item.date).toDateString();
+
+    if (!acc[dateKey]) {
+      acc[dateKey] = {
+        amount: 0,
+        expense: 0,
+      };
     }
-  }
+
+    acc[dateKey].amount += item.amount;
+    if (item.type === "expense") {
+      acc[dateKey].expense += item.amount;
+    }
+
+    return acc;
+  }, {});
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+  // sort by date
+  sampleData = Object.entries(sampleData).map(([data, value]) => ({
+    date: data,
+    amount: value.amount,
+    expense: value.expense,
+  }));
+  sampleData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  chartData.push(
+    ...sampleData.filter((item) => new Date(item.date) > thirtyDaysAgo)
+  );
+  console.log("chartData:", chartData);
   TransactiomList.map((list) => {
     console.log(list.type);
     if (list.type === "expense") {
       Balance -= list.amount;
       Expense += list.amount;
-     
+
       console.log(list.amount);
     } else if (list.type === "income") {
       Balance += list.amount;
       Income += list.amount;
-     
     }
   });
 
@@ -154,7 +147,7 @@ export const DashBoard = () => {
           <div className="dash-chart-2"></div>
           <div className="receent_traans">
             <h1>Recent Transcation</h1>
-            <TranscationItemsList />
+            <TranscationItemsListLimited />
           </div>
         </div>
       )}
