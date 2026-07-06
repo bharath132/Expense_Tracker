@@ -2,13 +2,37 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
+const path = require("path");
+require("dotenv").config({
+  path: path.join(__dirname, "configs", ".env"),
+});
+
 app.use(express.json());
 app.use(cors());
 const Transcationlist = require("./models/list");
 const CategoryList = require("./models/categoryList");
-mongoose.connect(
-  "mongodb+srv://chidambaramb2:wT2Y8atoYKQWdz6K@expense-tracker.xkaku5j.mongodb.net/expense_tracker?retryWrites=true&w=majority&appName=expense-tracker"
-);
+
+const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
+
+async function startServer() {
+  if (!mongoUri) {
+    console.error("Missing MONGO_URI environment variable");
+    process.exit(1);
+  }
+
+  try {
+    await mongoose.connect(mongoUri);
+    app.listen(5000, () => {
+      console.log("Server is running on port 5000");
+    });
+  } catch (error) {
+    console.error("MongoDB connection failed:", error);
+    process.exit(1);
+  }
+}
+
+startServer();
+
 
 app.get("/", (req, res) => {
   res.send("HELLO WORLD");
@@ -81,7 +105,4 @@ app.delete("/deleteCategoryList", (req, res) => {
       res.json(result);
     }
   );
-});
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
 });

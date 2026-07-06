@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: expense-tracker
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: expense-tracker
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: expense-tracker
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: expense-tracker-backend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: expense-tracker-secrets
+                  key: mongo-uri
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20

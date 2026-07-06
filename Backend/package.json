@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "cros": "^1.1.0",
     "express": "^4.19.2",
-    "nodemon": "^3.1.9"
+    "mongoose": "^8.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0"
   },
   "scripts": {
-    "dev": "cd src && node index.js",
-    "build": "cd src && node index.js"
+    "dev": "node src/index.js",
+    "build": "node src/index.js"
   }
 }

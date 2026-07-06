@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  # ── Backend (Express + MongoDB) ──
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: expense-tracker-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      # Override your MongoDB URI here if needed
+      # - MONGO_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>
+    restart: unless-stopped
+
+  # ── Frontend (React / Vite → Nginx) ──
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      args:
+        # Pass the backend URL at build time so Vite can bake it in
+        VITE_API_URL: http://localhost:5000
+    container_name: expense-tracker-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
